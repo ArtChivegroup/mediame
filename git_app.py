@@ -19,9 +19,13 @@ class GitUploaderLoaderApp:
        repo_path = filedialog.askdirectory(title="Pilih Repository Lokal")
        if repo_path and os.path.exists(os.path.join(repo_path, ".git")):
            repo = Repo(repo_path)
-           repo.git.add(".")
-           repo.git.commit("-m", "Commit otomatis")
-           repo.git.push("origin", repo.active_branch)
+           status = repo.git.status()
+           if 'nothing to commit' in status:
+               print("Tidak ada perubahan yang perlu di-commit.")
+           else:
+               repo.git.add(".")
+               repo.git.commit("-m", "Commit otomatis")
+               repo.git.push("origin", repo.active_branch)
        else:
            print("Direktori yang dipilih bukan merupakan repository Git yang valid.")
 
