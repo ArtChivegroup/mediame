@@ -25,7 +25,7 @@ class GitUploaderLoaderApp:
            else:
                repo.git.add(".")
                repo.git.commit("-m", "Commit otomatis")
-               repo.git.push("https://ghp_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@github.com/ArtChivegroup/mediame.git", repo.active_branch)
+               repo.git.push("https://github.com/ArtChivegroup/mediame.git", repo.active_branch)
        else:
            print("Direktori yang dipilih bukan merupakan repository Git yang valid.")
 
@@ -34,7 +34,7 @@ class GitUploaderLoaderApp:
        if repo_path:
            if os.path.exists(repo_path) and os.path.isdir(repo_path):
                shutil.rmtree(repo_path)
-           repo_url = "https://ghp_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@github.com/ArtChivegroup/mediame.git"
+           repo_url = "https://github.com/ArtChivegroup/mediame.git"
            Repo.clone_from(repo_url, repo_path)
 
 if __name__ == "__main__":
